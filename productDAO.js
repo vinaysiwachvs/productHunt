@@ -51,9 +51,6 @@ let getProductsFromDB = async (id) => {
   }
 };
 
-
-// {err : "Duplicate Entry !(Product with similar name already exists)"} err1
-// {err : "Duplicate Entry !(Product with similar url already exists)"} err2
 //get noOfProducts
 const getNoOfProductsQuery = `SELECT COUNT(id) as cp FROM product `;
 
@@ -69,10 +66,10 @@ let addProductToDB = async (productInput) => {
     let userId = Date.now(); ///creating own id's using Date.now() method  
     userId = Math.floor(userId/1000);
   
-    let columnQuery="id,";
-    let valuesQuery=`${userId},`;
-    columnQuery += `name, visit_url,icon_url,long_desp,short_desp,created_by,created_on,updated_by,updated_on`;
-    valuesQuery += `"${productInput["name"]}","${productInput["visit_url"]}","${productInput["icon_url"]}","${productInput["long_desp"]}","${productInput["short_desp"]}",${productInput["created_by"]},"${productInput["created_on"]}",${productInput["updated_by"]},"${productInput["updated_on"]}" `;
+    let columnQuery="id,created_on,updated_on,";
+    let valuesQuery=`${userId},"${dateTime}","${dateTime}",`;
+    columnQuery += `name, visit_url,icon_url,long_desp,short_desp,created_by,updated_by`;
+    valuesQuery += `"${productInput["name"]}","${productInput["visit_url"]}","${productInput["icon_url"]}","${productInput["long_desp"]}","${productInput["short_desp"]}",${productInput["created_by"]},${productInput["updated_by"]}`;
     
     let defaultSqlQuery = "SELECT * FROM product";
   

@@ -1,6 +1,6 @@
 const express = require("express");
-const ProductService = require("./ProductService");
-const ProductUtility=require('./ProductUtility');
+const ProductService = require("./productService");
+const ProductUtility=require('./productUtility');
 const app = express();
 const port = 3000;
 var bodyParser = require("body-parser");
